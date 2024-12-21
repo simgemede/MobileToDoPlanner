@@ -15,9 +15,13 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Colors.blue, // Üst renk mavi
+          primaryColor: const Color.fromRGBO(33, 150, 243, 1), // Üst renk mavi
           brightness: Brightness.light // Uygulamanın açık tema
           ),
+      themeMode: ThemeMode.dark,
+      darkTheme: ThemeData(
+          primaryColor: const Color.fromARGB(255, 44, 44, 44),
+          brightness: Brightness.dark),
       home: HomePage(),
     );
   }
