@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_to_do_planner/UI/home_page.dart';
+import 'package:mobile_to_do_planner/UI/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,14 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primaryColor: const Color.fromRGBO(33, 150, 243, 1), // Üst renk mavi
-          brightness: Brightness.light // Uygulamanın açık tema
-          ),
+      theme: Themes.light,
+      darkTheme: Themes.dark,
       themeMode: ThemeMode.dark,
-      darkTheme: ThemeData(
-          primaryColor: const Color.fromARGB(255, 44, 44, 44),
-          brightness: Brightness.dark),
       home: HomePage(),
     );
   }
