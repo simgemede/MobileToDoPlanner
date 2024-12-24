@@ -11,7 +11,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar(),
+      appBar: uygulama_cubugu(),
       body: Column(
         children: [
           Text(
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _appBar() {
+  uygulama_cubugu() {
     return AppBar(
       leading: GestureDetector(
         onTap: () {
