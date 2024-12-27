@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_to_do_planner/UI/home_page.dart';
 import 'package:mobile_to_do_planner/UI/theme.dart';
+import 'package:mobile_to_do_planner/services/theme_services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: Themes.gunduz,
-      darkTheme: Themes.gece,
-      themeMode: ThemeMode.dark,
+      theme: Themes.aydinlik,
+      darkTheme: Themes.karanlik,
+      themeMode: TemaServisi().temaModu,
       home: HomePage(),
     );
   }
