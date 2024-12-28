@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_to_do_planner/services/theme_services.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     return AppBar(
       leading: GestureDetector(
         onTap: () {
-          print("Selamun Aleyküm");
+          TemaServisi().temaDegistir();
         },
         child: Icon(Icons.nightlight_round, size: 20),
       ),
