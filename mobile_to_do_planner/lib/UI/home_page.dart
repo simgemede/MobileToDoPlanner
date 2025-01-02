@@ -1,15 +1,23 @@
+import 'dart:ffi';
 import 'package:flutter/material.dart';
+import 'package:mobile_to_do_planner/services/notification_services.dart';
 import 'package:mobile_to_do_planner/services/theme_services.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Anasayfa extends StatefulWidget {
+  const Anasayfa({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Anasayfa> createState() => _AnasayfaState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AnasayfaState extends State<Anasayfa> {
+  var bildirimServisi;
   @override
+  void initState() {
+    super.initState();
+    bildirimServisi = BildirimServisi();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: uygulama_cubugu(),
