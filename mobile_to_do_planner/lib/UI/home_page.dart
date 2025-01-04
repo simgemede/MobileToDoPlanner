@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_to_do_planner/services/notification_services.dart';
 import 'package:mobile_to_do_planner/services/theme_services.dart';
 
 class Anasayfa extends StatefulWidget {
@@ -34,7 +33,10 @@ class _AnasayfaState extends State<Anasayfa> {
         child: Icon(Icons.nightlight_round, size: 20),
       ),
       actions: [
-        Icon(Icons.person, size: 20),
+        CircleAvatar(
+          backgroundImage:
+              AssetImage("images/british-shorthair-3401683_640.jpg"),
+        ),
         SizedBox(
           width: 20,
         )
