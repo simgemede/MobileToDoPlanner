@@ -4,7 +4,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:mobile_to_do_planner/UI/home_page.dart';
 import 'package:mobile_to_do_planner/UI/theme.dart';
 import 'package:mobile_to_do_planner/services/theme_services.dart';
-import 'dart:ffi';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

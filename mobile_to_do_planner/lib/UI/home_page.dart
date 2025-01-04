@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:mobile_to_do_planner/services/notification_services.dart';
 import 'package:mobile_to_do_planner/services/theme_services.dart';
@@ -11,13 +10,7 @@ class Anasayfa extends StatefulWidget {
 }
 
 class _AnasayfaState extends State<Anasayfa> {
-  var bildirimServisi;
   @override
-  void initState() {
-    super.initState();
-    bildirimServisi = BildirimServisi();
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: uygulama_cubugu(),
@@ -26,7 +19,7 @@ class _AnasayfaState extends State<Anasayfa> {
           Text(
             "To Do Planner",
             style: TextStyle(fontSize: 30),
-          )
+          ),
         ],
       ),
     );
