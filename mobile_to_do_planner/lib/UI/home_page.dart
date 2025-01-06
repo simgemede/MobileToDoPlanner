@@ -32,8 +32,23 @@ class _AnasayfaState extends State<Anasayfa> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(DateFormat.yMMMMd().format(DateTime.now())),
-                    Text("Today")
+                    Text(
+                      DateFormat.yMMMMd().format(DateTime.now()),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Roboto',
+                        color: Colors.blue,
+                      ),
+                    ),
+                    const Text(
+                      "Today",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey,
+                      ),
+                    )
                   ],
                 ),
               )
