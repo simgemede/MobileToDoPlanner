@@ -24,10 +24,13 @@ class _AnasayfaState extends State<Anasayfa> {
       appBar: uygulama_cubugu(),
       body: Column(
         children: [
-          Text(
-            "To Do Planner",
-            style: TextStyle(fontSize: 30),
-          ),
+          Row(
+            children: [
+              Column(
+                children: [Text(DateTime.now().toString())],
+              )
+            ],
+          )
         ],
       ),
     );
