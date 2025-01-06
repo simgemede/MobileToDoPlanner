@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:mobile_to_do_planner/services/theme_services.dart';
 
 class Anasayfa extends StatefulWidget {
@@ -27,7 +28,9 @@ class _AnasayfaState extends State<Anasayfa> {
           Row(
             children: [
               Column(
-                children: [Text(DateTime.now().toString())],
+                children: [
+                  Text(DateFormat.yMMMMd().format(DateTime.now())),
+                ],
               )
             ],
           )
