@@ -27,10 +27,15 @@ class _AnasayfaState extends State<Anasayfa> {
         children: [
           Row(
             children: [
-              Column(
-                children: [
-                  Text(DateFormat.yMMMMd().format(DateTime.now())),
-                ],
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(DateFormat.yMMMMd().format(DateTime.now())),
+                    Text("Today")
+                  ],
+                ),
               )
             ],
           )
