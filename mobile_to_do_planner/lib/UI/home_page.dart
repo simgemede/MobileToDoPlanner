@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mobile_to_do_planner/UI/button.dart';
 import 'package:mobile_to_do_planner/services/theme_services.dart';
 
 class Anasayfa extends StatefulWidget {
@@ -26,6 +27,7 @@ class _AnasayfaState extends State<Anasayfa> {
       body: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -51,6 +53,10 @@ class _AnasayfaState extends State<Anasayfa> {
                     )
                   ],
                 ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(right: 20),
+                child: MyButton(label: "+ Görev Ekle", onTap: () => null),
               )
             ],
           )
