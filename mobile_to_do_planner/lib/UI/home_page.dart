@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_to_do_planner/UI/button.dart';
@@ -26,12 +27,12 @@ class _AnasayfaState extends State<Anasayfa> {
       appBar: uygulama_cubugu(),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
-                child: Column(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -53,25 +54,34 @@ class _AnasayfaState extends State<Anasayfa> {
                     ),
                   ],
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(right: 20),
-                child: MyButton(label: "+ Görev Ekle", onTap: () => null),
-              )
-            ],
+                MyButton(
+                    label: "+ Görev Ekle",
+                    onTap: () => print("Görev ekleye tıklandı")),
+              ],
+            ),
+          ),
+          Container(
+            child: DatePicker(
+              DateTime.now(),
+              height: 100,
+              width: 80,
+              initialSelectedDate: DateTime.now(),
+              selectionColor: const Color.fromARGB(255, 147, 3, 213),
+              selectedTextColor: const Color.fromARGB(255, 255, 255, 255),
+            ),
           )
         ],
       ),
     );
   }
 
-  uygulama_cubugu() {
+  AppBar uygulama_cubugu() {
     return AppBar(
       leading: GestureDetector(
         onTap: () {
           TemaServisi().temaDegistir();
         },
-        child: Icon(Icons.nightlight_round, size: 20),
+        child: const Icon(Icons.nightlight_round, size: 20),
       ),
       actions: [
         GestureDetector(
@@ -79,12 +89,10 @@ class _AnasayfaState extends State<Anasayfa> {
           child: CircleAvatar(
             backgroundImage: _profilFotoUrl != null
                 ? FileImage(File(_profilFotoUrl!))
-                : AssetImage("images/foto.jpg") as ImageProvider,
+                : const AssetImage("images/foto.jpg"),
           ),
         ),
-        const SizedBox(
-          width: 20,
-        )
+        const SizedBox(width: 20),
       ],
     );
   }
