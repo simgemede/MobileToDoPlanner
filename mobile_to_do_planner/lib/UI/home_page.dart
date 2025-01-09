@@ -30,7 +30,7 @@ class _AnasayfaState extends State<Anasayfa> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -50,7 +50,7 @@ class _AnasayfaState extends State<Anasayfa> {
                         fontWeight: FontWeight.w500,
                         color: Colors.grey,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
