@@ -61,6 +61,7 @@ class _AnasayfaState extends State<Anasayfa> {
             ),
           ),
           Container(
+            margin: const EdgeInsets.only(top: 20),
             child: DatePicker(
               DateTime.now(),
               height: 100,
