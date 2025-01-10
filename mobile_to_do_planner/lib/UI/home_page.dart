@@ -56,7 +56,7 @@ class _AnasayfaState extends State<Anasayfa> {
                 ),
                 MyButton(
                     label: "+ Add Task",
-                    onTap: () => print("Görev ekleye tıklandı")),
+                    onTap: () => print("The add task button was clicked.")),
               ],
             ),
           ),
