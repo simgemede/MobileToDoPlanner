@@ -13,6 +13,7 @@ class Anasayfa extends StatefulWidget {
 }
 
 class _AnasayfaState extends State<Anasayfa> {
+  DateTime _seciliGun = DateTime.now();
   String? _profilFotoUrl;
 
   void _fotoDegistir(String? yeniFoto) {
@@ -61,7 +62,7 @@ class _AnasayfaState extends State<Anasayfa> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 20),
+            margin: const EdgeInsets.only(top: 20, left: 20),
             child: DatePicker(
               DateTime.now(),
               height: 100,
@@ -81,6 +82,9 @@ class _AnasayfaState extends State<Anasayfa> {
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
                   color: Colors.grey),
+              onDateChange: (tarih) {
+                _seciliGun = tarih;
+              },
             ),
           )
         ],
