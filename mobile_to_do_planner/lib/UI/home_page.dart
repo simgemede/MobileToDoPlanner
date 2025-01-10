@@ -67,7 +67,19 @@ class _AnasayfaState extends State<Anasayfa> {
               width: 80,
               initialSelectedDate: DateTime.now(),
               selectionColor: const Color.fromARGB(255, 147, 3, 213),
-              selectedTextColor: const Color.fromARGB(255, 255, 255, 255),
+              selectedTextColor: const Color.fromARGB(255, 0, 0, 0),
+              dateTextStyle: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey),
+              dayTextStyle: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey),
+              monthTextStyle: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey),
             ),
           )
         ],
