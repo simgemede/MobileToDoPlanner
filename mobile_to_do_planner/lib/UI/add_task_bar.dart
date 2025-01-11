@@ -16,6 +16,7 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.theme.scaffoldBackgroundColor,
       appBar: uygulama_cubugu(),
       body: Container(),
     );
