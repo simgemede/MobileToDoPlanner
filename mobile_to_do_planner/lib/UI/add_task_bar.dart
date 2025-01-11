@@ -25,17 +25,13 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
     return AppBar(
       leading: GestureDetector(
         onTap: () {
-          TemaServisi().temaDegistir();
+          Get.back();
         },
-        child: const Icon(Icons.nightlight_round, size: 20),
+        child: const Icon(Icons.arrow_back_sharp, size: 20),
       ),
       actions: [
         GestureDetector(
-          onTap: () async {
-            /*setState(() {
-              _profilFotoUrl = "/path/to/new/image.jpg";
-            });*/
-          },
+          onTap: () async {},
           child: CircleAvatar(
             backgroundImage: _profilFotoUrl != null
                 ? FileImage(File(_profilFotoUrl!))
