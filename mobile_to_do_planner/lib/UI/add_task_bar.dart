@@ -18,7 +18,18 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
     return Scaffold(
       backgroundColor: context.theme.scaffoldBackgroundColor,
       appBar: uygulama_cubugu(),
-      body: Container(),
+      body: Container(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Text(
+                  "Add Task",
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+                )
+              ],
+            ),
+          )),
     );
   }
 
