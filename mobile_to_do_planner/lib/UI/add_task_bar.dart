@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_to_do_planner/UI/input_field.dart';
 import 'package:mobile_to_do_planner/services/theme_services.dart';
 
 class GorevBariSayfasi extends StatefulWidget {
@@ -22,11 +23,13 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "Add Task",
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
-                )
+                ),
+                GirisAlani(title: "Title", hint: "Enter your title"),
               ],
             ),
           )),
