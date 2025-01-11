@@ -21,6 +21,11 @@ class GirisAlani extends StatelessWidget {
           Text(
             title,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+          ),
+          Container(
+            height: 50,
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 1.0)),
           )
         ],
       ),
