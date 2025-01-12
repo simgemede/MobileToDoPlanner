@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class GirisAlani extends StatelessWidget {
   final String title;
@@ -17,6 +18,7 @@ class GirisAlani extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
@@ -25,8 +27,22 @@ class GirisAlani extends StatelessWidget {
           Container(
             height: 50,
             decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey, width: 1.0)),
-          )
+                border: Border.all(color: Colors.grey, width: 1.0),
+                borderRadius: BorderRadius.circular(10)),
+            child: Row(
+              children: [
+                Expanded(
+                    child: TextFormField(
+                  autofocus: false,
+                  controller: controller,
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                  decoration: InputDecoration(
+                    hintText: "Enter your title",
+                  ),
+                ))
+              ],
+            ),
+          ),
         ],
       ),
     );
