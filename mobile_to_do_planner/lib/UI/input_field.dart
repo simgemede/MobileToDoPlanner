@@ -39,7 +39,7 @@ class GirisAlani extends StatelessWidget {
                   controller: kontrol,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                   decoration: InputDecoration(
-                    hintText: "Enter your title",
+                    hintText: ipucu,
                   ),
                 ))
               ],
