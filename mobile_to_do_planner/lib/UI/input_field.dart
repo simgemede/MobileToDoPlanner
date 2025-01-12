@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class GirisAlani extends StatelessWidget {
-  final String title;
-  final String hint;
-  final TextEditingController? controller;
+  final String baslik;
+  final String ipucu;
+  final TextEditingController? kontrol;
   final Widget? widget;
   const GirisAlani(
       {super.key,
-      required this.title,
-      required this.hint,
-      this.controller,
+      required this.baslik,
+      required this.ipucu,
+      this.kontrol,
       this.widget});
 
   @override
@@ -21,11 +21,13 @@ class GirisAlani extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            title,
+            baslik,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
           ),
           Container(
             height: 50,
+            margin: EdgeInsets.only(top: 8.0),
+            padding: EdgeInsets.only(left: 10),
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey, width: 1.0),
                 borderRadius: BorderRadius.circular(10)),
@@ -34,7 +36,7 @@ class GirisAlani extends StatelessWidget {
                 Expanded(
                     child: TextFormField(
                   autofocus: false,
-                  controller: controller,
+                  controller: kontrol,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                   decoration: InputDecoration(
                     hintText: "Enter your title",

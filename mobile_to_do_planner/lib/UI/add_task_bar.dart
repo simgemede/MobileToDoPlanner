@@ -28,7 +28,8 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                   "Add Task",
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
                 ),
-                GirisAlani(title: "Title", hint: "Enter your title"),
+                GirisAlani(baslik: "Title", ipucu: "Enter your title"),
+                GirisAlani(baslik: "Note", ipucu: "Enter your note")
               ],
             ),
           )),
