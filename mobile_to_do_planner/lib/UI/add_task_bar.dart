@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:mobile_to_do_planner/UI/input_field.dart';
 
 class GorevBariSayfasi extends StatefulWidget {
@@ -11,6 +12,7 @@ class GorevBariSayfasi extends StatefulWidget {
 }
 
 class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
+  DateTime _seciliGun = DateTime.now();
   String? _profilFotoUrl;
 
   @override
@@ -29,7 +31,9 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
                 ),
                 GirisAlani(baslik: "Title", ipucu: "Enter your title"),
-                GirisAlani(baslik: "Note", ipucu: "Enter your note")
+                GirisAlani(baslik: "Note", ipucu: "Enter your note"),
+                GirisAlani(
+                    baslik: "Date", ipucu: DateFormat.yMd().format(_seciliGun))
               ],
             ),
           )),
