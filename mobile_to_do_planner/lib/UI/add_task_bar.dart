@@ -29,19 +29,18 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Add Task",
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
                 ),
-                GirisAlani(baslik: "Title", ipucu: "Enter your title"),
-                GirisAlani(baslik: "Note", ipucu: "Enter your note"),
+                const GirisAlani(baslik: "Title", ipucu: "Enter your title"),
+                const GirisAlani(baslik: "Note", ipucu: "Enter your note"),
                 GirisAlani(
                   baslik: "Date",
                   ipucu: DateFormat.yMd().format(_seciliGun),
                   widget: IconButton(
-                    icon: Icon(Icons.calendar_today_outlined),
+                    icon: const Icon(Icons.calendar_today_outlined),
                     onPressed: () {
-                      print("Merhaba");
                       _tarihAl();
                     },
                   ),
@@ -53,13 +52,15 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                       baslik: "Start Date",
                       ipucu: _baslangicZamani,
                       widget: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.access_time_rounded,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          _zamanAl(baslangicZamaniMi: true);
+                        },
                       ),
                     )),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Expanded(
@@ -67,10 +68,12 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                       baslik: "End Date",
                       ipucu: _bitisZamani,
                       widget: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.access_time_rounded,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          _zamanAl(baslangicZamaniMi: false);
+                        },
                       ),
                     ))
                   ],
@@ -95,7 +98,7 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
           child: CircleAvatar(
             backgroundImage: _profilFotoUrl != null
                 ? FileImage(File(_profilFotoUrl!))
-                : const AssetImage("images/foto.jpg"),
+                : const AssetImage("images/foto.jpg") as ImageProvider,
           ),
         ),
         const SizedBox(width: 20),
@@ -103,38 +106,49 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
     );
   }
 
-  Future<void> _tarihAl() async {
+  Future<void> _tarihAl({bool? baslangicZamaniMi}) async {
     DateTime? _secimTarihi = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2025),
       lastDate: DateTime(2030),
     );
+
     if (_secimTarihi != null) {
       setState(() {
         _seciliGun = _secimTarihi;
+        if (baslangicZamaniMi == true) {
+          _baslangicZamani = DateFormat.yMd().format(_seciliGun);
+        } else if (baslangicZamaniMi == false) {
+          _bitisZamani = DateFormat.yMd().format(_seciliGun);
+        }
       });
     } else {
-      print("Something is wrong!");
+      print("Date selection canceled!");
     }
   }
 
-  /*Future<void> _zamanAl() async {
-    var secilenZaman = _secilenZamaniGoster();
-    String _zamanBicimlendirme = secilenZaman.format(context);
-    if (secilenZaman == null) {
-      print("Time canceled");
-    } else if (baslangicZamaniMi == true) {
-      _baslangicZamani = _zamanBicimlendirme;
-    } else if (baslangicZmaniMi == false) {
-      _bitisZamani = _zamanBicimlendirme;
+  Future<void> _zamanAl({required bool baslangicZamaniMi}) async {
+    var secilenZaman = await _secilenZamaniGoster();
+    if (secilenZaman != null) {
+      String _zamanBicimlendirme = secilenZaman.format(context);
+      setState(() {
+        if (baslangicZamaniMi) {
+          _baslangicZamani = _zamanBicimlendirme;
+        } else {
+          _bitisZamani = _zamanBicimlendirme;
+        }
+      });
+    } else {
+      print("Time selection canceled!");
     }
-  }*/
+  }
 
-  _secilenZamaniGoster() {
-    return showTimePicker(
-        initialEntryMode: TimePickerEntryMode.input,
-        context: context,
-        initialTime: TimeOfDay(hour: 10, minute: 10));
+  Future<TimeOfDay?> _secilenZamaniGoster() async {
+    return await showTimePicker(
+      initialEntryMode: TimePickerEntryMode.input,
+      context: context,
+      initialTime: const TimeOfDay(hour: 10, minute: 10),
+    );
   }
 }
