@@ -17,6 +17,13 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
   String _baslangicZamani =
       DateFormat("hh:mm a").format(DateTime.now()).toString();
   String? _profilFotoUrl;
+  int hatirlatici = 5;
+  List<int> hatirlaticiListe = [
+    5,
+    10,
+    15,
+    20,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -26,60 +33,84 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
       body: Container(
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Add Task",
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const Text(
+                "Add Task",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
+              ),
+              const GirisAlani(baslik: "Title", ipucu: "Enter your title"),
+              const GirisAlani(baslik: "Note", ipucu: "Enter your note"),
+              GirisAlani(
+                baslik: "Date",
+                ipucu: DateFormat.yMd().format(_seciliGun),
+                widget: IconButton(
+                  icon: const Icon(Icons.calendar_today_outlined),
+                  onPressed: () {
+                    _tarihAl();
+                  },
                 ),
-                const GirisAlani(baslik: "Title", ipucu: "Enter your title"),
-                const GirisAlani(baslik: "Note", ipucu: "Enter your note"),
-                GirisAlani(
-                  baslik: "Date",
-                  ipucu: DateFormat.yMd().format(_seciliGun),
-                  widget: IconButton(
-                    icon: const Icon(Icons.calendar_today_outlined),
-                    onPressed: () {
-                      _tarihAl();
-                    },
-                  ),
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                        child: GirisAlani(
-                      baslik: "Start Date",
-                      ipucu: _baslangicZamani,
-                      widget: IconButton(
-                        icon: const Icon(
-                          Icons.access_time_rounded,
-                        ),
-                        onPressed: () {
-                          _zamanAl(baslangicZamaniMi: true);
-                        },
+              ),
+              Row(
+                children: [
+                  Expanded(
+                      child: GirisAlani(
+                    baslik: "Start Date",
+                    ipucu: _baslangicZamani,
+                    widget: IconButton(
+                      icon: const Icon(
+                        Icons.access_time_rounded,
                       ),
-                    )),
-                    const SizedBox(
-                      width: 10,
+                      onPressed: () {
+                        _zamanAl(baslangicZamaniMi: true);
+                      },
                     ),
-                    Expanded(
-                        child: GirisAlani(
-                      baslik: "End Date",
-                      ipucu: _bitisZamani,
-                      widget: IconButton(
-                        icon: const Icon(
-                          Icons.access_time_rounded,
-                        ),
-                        onPressed: () {
-                          _zamanAl(baslangicZamaniMi: false);
-                        },
+                  )),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                      child: GirisAlani(
+                    baslik: "End Date",
+                    ipucu: _bitisZamani,
+                    widget: IconButton(
+                      icon: const Icon(
+                        Icons.access_time_rounded,
                       ),
-                    ))
-                  ],
-                )
-              ],
-            ),
+                      onPressed: () {
+                        _zamanAl(baslangicZamaniMi: false);
+                      },
+                    ),
+                  ))
+                ],
+              ),
+              GirisAlani(
+                baslik: "Remind",
+                ipucu: "$hatirlatici minutes early",
+                widget: DropdownButton<int>(
+                  icon: const Icon(Icons.keyboard_arrow_down),
+                  iconSize: 30,
+                  elevation: 4,
+                  underline: Container(
+                    height: 0,
+                  ),
+                  value: hatirlatici,
+                  onChanged: (int? yeniDeger) {
+                    if (yeniDeger != null) {
+                      setState(() {
+                        hatirlatici = yeniDeger;
+                      });
+                    }
+                  },
+                  items: hatirlaticiListe.map((int value) {
+                    return DropdownMenuItem<int>(
+                      value: value,
+                      child: Text(value.toString()),
+                    );
+                  }).toList(),
+                ),
+              ),
+            ]),
           )),
     );
   }
@@ -135,6 +166,13 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
       setState(() {
         if (baslangicZamaniMi) {
           _baslangicZamani = _zamanBicimlendirme;
+
+          TimeOfDay bitisZamani = TimeOfDay(
+              hour: (secilenZaman.minute + 1) >= 60
+                  ? (secilenZaman.hour + 1) % 24
+                  : secilenZaman.hour,
+              minute: (secilenZaman.minute + 1) % 60);
+          _bitisZamani = bitisZamani.format(context);
         } else {
           _bitisZamani = _zamanBicimlendirme;
         }
