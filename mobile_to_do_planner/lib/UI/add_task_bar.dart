@@ -13,6 +13,9 @@ class GorevBariSayfasi extends StatefulWidget {
 
 class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
   DateTime _seciliGun = DateTime.now();
+  String _bitisZamani = " ";
+  String _baslangicZamani =
+      DateFormat("hh:mm a").format(DateTime.now()).toString();
   String? _profilFotoUrl;
 
   @override
@@ -33,7 +36,45 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                 GirisAlani(baslik: "Title", ipucu: "Enter your title"),
                 GirisAlani(baslik: "Note", ipucu: "Enter your note"),
                 GirisAlani(
-                    baslik: "Date", ipucu: DateFormat.yMd().format(_seciliGun))
+                  baslik: "Date",
+                  ipucu: DateFormat.yMd().format(_seciliGun),
+                  widget: IconButton(
+                    icon: Icon(Icons.calendar_today_outlined),
+                    onPressed: () {
+                      print("Merhaba");
+                      _tarihAl();
+                    },
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                        child: GirisAlani(
+                      baslik: "Start Date",
+                      ipucu: _baslangicZamani,
+                      widget: IconButton(
+                        icon: Icon(
+                          Icons.access_time_rounded,
+                        ),
+                        onPressed: () {},
+                      ),
+                    )),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                        child: GirisAlani(
+                      baslik: "End Date",
+                      ipucu: _bitisZamani,
+                      widget: IconButton(
+                        icon: Icon(
+                          Icons.access_time_rounded,
+                        ),
+                        onPressed: () {},
+                      ),
+                    ))
+                  ],
+                )
               ],
             ),
           )),
@@ -60,5 +101,40 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
         const SizedBox(width: 20),
       ],
     );
+  }
+
+  Future<void> _tarihAl() async {
+    DateTime? _secimTarihi = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2025),
+      lastDate: DateTime(2030),
+    );
+    if (_secimTarihi != null) {
+      setState(() {
+        _seciliGun = _secimTarihi;
+      });
+    } else {
+      print("Something is wrong!");
+    }
+  }
+
+  /*Future<void> _zamanAl() async {
+    var secilenZaman = _secilenZamaniGoster();
+    String _zamanBicimlendirme = secilenZaman.format(context);
+    if (secilenZaman == null) {
+      print("Time canceled");
+    } else if (baslangicZamaniMi == true) {
+      _baslangicZamani = _zamanBicimlendirme;
+    } else if (baslangicZmaniMi == false) {
+      _bitisZamani = _zamanBicimlendirme;
+    }
+  }*/
+
+  _secilenZamaniGoster() {
+    return showTimePicker(
+        initialEntryMode: TimePickerEntryMode.input,
+        context: context,
+        initialTime: TimeOfDay(hour: 10, minute: 10));
   }
 }

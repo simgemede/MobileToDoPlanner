@@ -35,13 +35,19 @@ class GirisAlani extends StatelessWidget {
               children: [
                 Expanded(
                     child: TextFormField(
+                  readOnly: widget == null ? false : true,
                   autofocus: false,
                   controller: kontrol,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
                   decoration: InputDecoration(
                     hintText: ipucu,
                   ),
-                ))
+                )),
+                widget == null
+                    ? Container()
+                    : Container(
+                        child: widget,
+                      )
               ],
             ),
           ),
