@@ -13,6 +13,8 @@ class GorevBariSayfasi extends StatefulWidget {
 }
 
 class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
+  final TextEditingController _baslikController = TextEditingController();
+  final TextEditingController _notController = TextEditingController();
   DateTime _seciliGun = DateTime.now();
   String _bitisZamani = " ";
   String _baslangicZamani =
@@ -35,25 +37,34 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
       backgroundColor: context.theme.scaffoldBackgroundColor,
       appBar: uygulama_cubugu(),
       body: Container(
-          padding: const EdgeInsets.only(left: 20, right: 20),
+          padding: EdgeInsets.only(left: 20, right: 20),
           child: SingleChildScrollView(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Text(
+              Text(
                 "Add Task",
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
               ),
-              const GirisAlani(baslik: "Title", ipucu: "Enter your title"),
-              const GirisAlani(baslik: "Note", ipucu: "Enter your note"),
+              GirisAlani(
+                baslik: "Title",
+                ipucu: "Enter your title",
+                kontrol: _baslikController,
+              ),
+              GirisAlani(
+                baslik: "Note",
+                ipucu: "Enter your note",
+                kontrol: _notController,
+              ),
               GirisAlani(
                 baslik: "Date",
                 ipucu: DateFormat.yMd().format(_seciliGun),
                 widget: IconButton(
-                  icon: const Icon(Icons.calendar_today_outlined),
+                  icon: Icon(Icons.calendar_today_outlined),
                   onPressed: () {
                     _tarihAl();
                   },
                 ),
+                kontrol: null,
               ),
               Row(
                 children: [
@@ -62,13 +73,14 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                     baslik: "Start Date",
                     ipucu: _baslangicZamani,
                     widget: IconButton(
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.access_time_rounded,
                       ),
                       onPressed: () {
                         _zamanAl(baslangicZamaniMi: true);
                       },
                     ),
+                    kontrol: null,
                   )),
                   const SizedBox(
                     width: 10,
@@ -85,6 +97,7 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                         _zamanAl(baslangicZamaniMi: false);
                       },
                     ),
+                    kontrol: null,
                   ))
                 ],
               ),
@@ -113,6 +126,7 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                     );
                   }).toList(),
                 ),
+                kontrol: null,
               ),
               GirisAlani(
                 baslik: "Repeat",
@@ -142,6 +156,7 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                     );
                   }).toList(),
                 ),
+                kontrol: null,
               ),
               SizedBox(
                 height: 20,
@@ -149,11 +164,28 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [Butonum(label: "Create Task", onTap: () => null)],
+                children: [
+                  Butonum(label: "Create Task", onTap: () => _tarihiDogrula())
+                ],
               )
             ]),
           )),
     );
+  }
+
+  _tarihiDogrula() {
+    if (_baslikController.text.isNotEmpty && _notController.text.isNotEmpty) {
+      //database ekleyeceğiz
+      Get.back();
+    } else if (_baslikController.text.isEmpty || _notController.text.isEmpty) {
+      Get.snackbar("Required", "All fields are required!",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: const Color.fromARGB(255, 197, 197, 197),
+          icon: Icon(
+            Icons.warning_amber_rounded,
+            color: Colors.red,
+          ));
+    }
   }
 
   AppBar uygulama_cubugu() {
