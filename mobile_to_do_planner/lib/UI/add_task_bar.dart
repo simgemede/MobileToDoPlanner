@@ -16,7 +16,7 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
   DateTime _seciliGun = DateTime.now();
   String _bitisZamani = " ";
   String _baslangicZamani =
-      DateFormat("hh:mm a").format(DateTime.now()).toString();
+      DateFormat("HH:mm").format(DateTime.now()).toString();
   String? _profilFotoUrl;
   int hatirlatici = 5;
   List<int> hatirlaticiListe = [
@@ -147,7 +147,7 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                 height: 20,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [Butonum(label: "Create Task", onTap: () => null)],
               )
@@ -203,7 +203,8 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
   Future<void> _zamanAl({required bool baslangicZamaniMi}) async {
     var secilenZaman = await _secilenZamaniGoster();
     if (secilenZaman != null) {
-      String _zamanBicimlendirme = secilenZaman.format(context);
+      String _zamanBicimlendirme =
+          "${secilenZaman.hour.toString().padLeft(2, '0')}:${secilenZaman.minute.toString().padLeft(2, '0')}";
       setState(() {
         if (baslangicZamaniMi) {
           _baslangicZamani = _zamanBicimlendirme;
@@ -213,7 +214,8 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                   ? (secilenZaman.hour + 1) % 24
                   : secilenZaman.hour,
               minute: (secilenZaman.minute + 1) % 60);
-          _bitisZamani = bitisZamani.format(context);
+          _bitisZamani =
+              "${bitisZamani.hour.toString().padLeft(2, '0')}:${bitisZamani.minute.toString().padLeft(2, '0')}";
         } else {
           _bitisZamani = _zamanBicimlendirme;
         }
