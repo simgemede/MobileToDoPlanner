@@ -25,6 +25,9 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
     20,
   ];
 
+  String _tekrar = "None";
+  List<String> tekrarListe = ["None", "Daily", "Weekly", "Monthly"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,6 +109,35 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                     return DropdownMenuItem<int>(
                       value: value,
                       child: Text(value.toString()),
+                    );
+                  }).toList(),
+                ),
+              ),
+              GirisAlani(
+                baslik: "Repeat",
+                ipucu: _tekrar,
+                widget: DropdownButton<String>(
+                  icon: const Icon(Icons.keyboard_arrow_down),
+                  iconSize: 30,
+                  elevation: 4,
+                  underline: Container(
+                    height: 0,
+                  ),
+                  value: _tekrar,
+                  onChanged: (String? yeniDeger) {
+                    if (yeniDeger != null) {
+                      setState(() {
+                        _tekrar = yeniDeger;
+                      });
+                    }
+                  },
+                  items: tekrarListe.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(
+                        value,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
                     );
                   }).toList(),
                 ),
