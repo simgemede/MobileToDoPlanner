@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:mobile_to_do_planner/UI/button.dart';
 import 'package:mobile_to_do_planner/UI/input_field.dart';
 
 class GorevBariSayfasi extends StatefulWidget {
@@ -142,6 +143,14 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
                   }).toList(),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [Butonum(label: "Create Task", onTap: () => null)],
+              )
             ]),
           )),
     );
