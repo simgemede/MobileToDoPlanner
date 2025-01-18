@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_to_do_planner/UI/button.dart';
 import 'package:mobile_to_do_planner/UI/input_field.dart';
+import 'package:mobile_to_do_planner/controllers/task_conrollers.dart';
+import 'package:mobile_to_do_planner/controllers/task_controller.dart';
+import 'package:mobile_to_do_planner/models/task.dart';
 
 class GorevBariSayfasi extends StatefulWidget {
   const GorevBariSayfasi({super.key});
@@ -13,6 +16,7 @@ class GorevBariSayfasi extends StatefulWidget {
 }
 
 class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
+  final GorevDenetleyicisi _taskController = Get.put(GorevDenetleyicisi());
   final TextEditingController _baslikController = TextEditingController();
   final TextEditingController _notController = TextEditingController();
   DateTime _seciliGun = DateTime.now();
@@ -175,7 +179,7 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
 
   _tarihiDogrula() {
     if (_baslikController.text.isNotEmpty && _notController.text.isNotEmpty) {
-      //database ekleyeceğiz
+      _dbyeGorevEkle();
       Get.back();
     } else if (_baslikController.text.isEmpty || _notController.text.isEmpty) {
       Get.snackbar("Required", "All fields are required!",
@@ -186,6 +190,20 @@ class _GorevBariSayfasiState extends State<GorevBariSayfasi> {
             color: Colors.red,
           ));
     }
+  }
+
+  _dbyeGorevEkle() async {
+    int value = await GorevDenetleyicisi.GorevEkle(
+        task: Task(
+            baslik: _baslikController.text,
+            not: _notController.text,
+            tarih: DateFormat.yMd().format(_seciliGun),
+            baslangicZamani: _baslangicZamani,
+            bitisZamani: _bitisZamani,
+            hatirlatici: hatirlatici,
+            tekrar: _tekrar));
+
+    print("My id is " + "$value");
   }
 
   AppBar uygulama_cubugu() {
