@@ -4,7 +4,12 @@ import 'package:get_storage/get_storage.dart';
 import 'package:mobile_to_do_planner/UI/home_page.dart';
 import 'package:mobile_to_do_planner/UI/theme.dart';
 import 'package:mobile_to_do_planner/db/db_helper.dart';
+import 'package:mobile_to_do_planner/screens/baslangic_ekrani.dart';
+import 'package:mobile_to_do_planner/screens/giris_ekrani.dart';
+import 'package:mobile_to_do_planner/screens/kayit_ekrani.dart';
 import 'package:mobile_to_do_planner/services/theme_services.dart';
+
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +30,11 @@ class MyApp extends StatelessWidget {
       theme: Themes.aydinlik,
       darkTheme: Themes.karanlik,
       themeMode: TemaServisi().temaModu,
-      home: Anasayfa(),
+      home: const BaslangicEkrani(),
+      routes: {
+        '/GirisEkrani': (context) => const GirisEkrani(),
+        '/kayitEkrani': (context) => const KayitEkrani(),
+      },
     );
   }
 }
