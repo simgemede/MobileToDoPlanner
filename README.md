@@ -18,9 +18,13 @@ Android Studio veya Visual Studio Code (Flutter eklentisiyle)
 
 Kullanım
 Kayıt ve Giriş: İlk kez giriş yapacak kullanıcılar kayıt olabilir. Mevcut kullanıcılar giriş yapabilir.
+
 Görev Ekleme: Ana ekranda "Add Task" butonuna tıklayın.
+
 Tarih ve Saat Belirleme: Planınız için tarih ve saat seçin.
+
 Alarm Aktivasyonu: Görevin bitiş süresinde alarm devreye girer.
+
 Görev Yönetimi: Görevleri güncelleyin veya tamamlandığında kaldırın.
 
 Ekran Görüntüleri
