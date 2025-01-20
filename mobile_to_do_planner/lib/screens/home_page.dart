@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:intl/intl.dart';
-import 'package:mobile_to_do_planner/UI/add_task_bar.dart';
+import 'package:mobile_to_do_planner/screens/add_task_bar.dart';
 import 'package:mobile_to_do_planner/UI/button.dart';
 import 'package:mobile_to_do_planner/services/theme_services.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_to_do_planner/screens/kayit_ekrani.dart'; // Kayıt ekranı sayfası import
-import 'package:mobile_to_do_planner/UI/home_page.dart'; // Ana sayfa import
+import 'package:mobile_to_do_planner/screens/home_page.dart'; // Ana sayfa import
 import 'package:mobile_to_do_planner/db/db_helper.dart'; // DBYardimci sınıfını import
 
 class GirisEkrani extends StatelessWidget {
