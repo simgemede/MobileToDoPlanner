@@ -22,16 +22,18 @@ Kullanım
 - Alarm Aktivasyonu: Görevin bitiş süresinde alarm devreye girer.
 - Görev Yönetimi: Görevleri güncelleyin veya tamamlandığında kaldırın.
 
-- Kayıt ve Giriş Ekranı
+  ...............................................................................
+
++ Kayıt ve Giriş Ekranı
 
 ![baslangic_ekrani](https://github.com/user-attachments/assets/135162b7-878d-497a-a085-d240d66a7b10)
 ![kayit-ol](https://github.com/user-attachments/assets/953a61e9-2231-4a59-8747-1cc5097c8ede)
 ![giris-yap](https://github.com/user-attachments/assets/12853b66-ad3a-48f3-8938-8dee3b2ab907)
 
-- Ana Ekran
++ Ana Ekran
 
 ![ana-ekran](https://github.com/user-attachments/assets/956edd80-79e0-4d84-aff0-b5a0b3ccf690)
 
-- Görev Ekleme
++ Görev Ekleme
 
 ![gorev-ekle](https://github.com/user-attachments/assets/412e74ce-75de-46d5-9086-801e9a53e670)
