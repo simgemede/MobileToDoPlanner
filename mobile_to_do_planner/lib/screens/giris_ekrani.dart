@@ -99,7 +99,6 @@ class GirisEkrani extends StatelessWidget {
                         //   );
                         // }
 
-                        // Doğrudan ana sayfaya yönlendir
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
