@@ -37,3 +37,9 @@ Ana Ekran
 Görev Ekleme
 
 ![gorev-ekle](https://github.com/user-attachments/assets/412e74ce-75de-46d5-9086-801e9a53e670)
+
+.............................................................................................
+
+Tanıtım Videosu
+
+https://youtu.be/DTWgxCWPZ48
